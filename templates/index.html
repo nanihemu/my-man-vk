@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+
+{% block title %}Home | Virat Kohli Hub{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-md-6">
+
+                <p class="text-warning fw-bold">
+                    THE KING OF MODERN CRICKET
+                </p>
+
+                <h1 class="display-3 fw-bold">
+                    Virat Kohli
+                </h1>
+
+                <p class="lead">
+                    Explore the biography, career milestones,
+                    centuries and cricket highlights of
+                    Virat Kohli.
+                </p>
+
+                <a href="/records"
+                   class="btn btn-warning btn-lg mt-3">
+                    Explore Records
+                </a>
+
+                <a href="/bio"
+                   class="btn btn-outline-light btn-lg mt-3">
+                    View Biography
+                </a>
+
+            </div>
+
+            <div class="col-md-6 text-center">
+
+                <img
+                    src="{{ url_for('static',
+                    filename='images/virat.jpg') }}"
+                    class="hero-img"
+                    alt="Virat Kohli">
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<section class="container py-5">
+
+    <h2 class="text-center section-title">
+        Cricket Overview
+    </h2>
+
+    <div class="row g-4 mt-3">
+
+        <div class="col-md-3">
+            <div class="stat-card">
+
+                <h3>{{ total }}</h3>
+
+                <p>Stored Century Entries</p>
+
+            </div>
+        </div>
+
+
+        {% for format, count in formats.items() %}
+
+        <div class="col-md-3">
+            <div class="stat-card">
+
+                <h3>{{ count }}</h3>
+
+                <p>{{ format }} Centuries</p>
+
+            </div>
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <p class="text-secondary text-center mt-3">
+        Statistics are calculated from the sample
+        entries in the application.
+    </p>
+
+</section>
+
+
+<section class="container pb-5">
+
+    <h2 class="section-title text-center">
+        Explore More
+    </h2>
+
+    <div class="row g-4 mt-3">
+
+        <div class="col-md-4">
+            <a href="/bio" class="feature-card">
+
+                <h4>Biography</h4>
+
+                <p>
+                    Explore his life and cricket journey.
+                </p>
+
+            </a>
+        </div>
+
+
+        <div class="col-md-4">
+            <a href="/centuries" class="feature-card">
+
+                <h4>Centuries</h4>
+
+                <p>
+                    Browse century innings by format.
+                </p>
+
+            </a>
+        </div>
+
+
+        <div class="col-md-4">
+            <a href="/videos" class="feature-card">
+
+                <h4>YouTube Videos</h4>
+
+                <p>
+                    Discover cricket videos and highlights.
+                </p>
+
+            </a>
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
+

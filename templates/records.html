@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}Records | Virat Kohli Hub{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <h1 class="section-title text-center">
+        Cricket Records
+    </h1>
+
+    <p class="text-center text-secondary">
+        Summary of the century entries
+        stored in this application.
+    </p>
+
+
+    <div class="table-responsive mt-4">
+
+        <table class="table table-bordered
+                      table-hover text-center">
+
+            <thead class="table-dark">
+
+                <tr>
+                    <th>Format</th>
+                    <th>Stored Centuries</th>
+                    <th>Highest Stored Score</th>
+                    <th>View</th>
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                {% for record in records %}
+
+                <tr>
+
+                    <td>{{ record.format }}</td>
+
+                    <td>{{ record.centuries }}</td>
+
+                    <td>{{ record.highest_score }}</td>
+
+                    <td>
+                        <a
+                            href="{{ url_for(
+                            'centuries',
+                            format=record.format
+                            ) }}"
+                            class="btn btn-sm btn-primary">
+
+                            View Centuries
+
+                        </a>
+                    </td>
+
+                </tr>
+
+                {% else %}
+
+                <tr>
+                    <td colspan="4">
+                        No records available.
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <div class="alert alert-info mt-4">
+
+        These statistics represent only the
+        entries added to the application.
+        Add complete, verified career records
+        for comprehensive statistics.
+
+    </div>
+
+</div>
+
+{% endblock %}
+

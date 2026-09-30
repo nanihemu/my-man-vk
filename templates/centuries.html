@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block title %}Centuries | Virat Kohli Hub{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <h1 class="section-title text-center">
+        Century Tracker
+    </h1>
+
+    <p class="text-center text-secondary">
+        Explore century innings stored in the app.
+    </p>
+
+
+    <form method="GET"
+          action="/centuries"
+          class="row justify-content-center my-4">
+
+
+        <div class="col-md-4">
+
+            <select name="format"
+                    class="form-select">
+
+                {% for f in ["All", "Test", "ODI", "T20I"] %}
+
+                <option value="{{ f }}"
+                    {% if selected_format == f %}
+                    selected
+                    {% endif %}>
+
+                    {{ "All Formats" if f == "All" else f }}
+
+                </option>
+
+                {% endfor %}
+
+            </select>
+
+        </div>
+
+
+        <div class="col-md-2 mt-2 mt-md-0">
+
+            <button class="btn btn-dark w-100">
+                Filter
+            </button>
+
+        </div>
+
+    </form>
+
+
+    <div class="table-responsive">
+
+        <table class="table table-striped
+                      table-hover align-middle">
+
+            <thead class="table-dark">
+
+                <tr>
+                    <th>Date</th>
+                    <th>Format</th>
+                    <th>Score</th>
+                    <th>Opponent</th>
+                    <th>Venue</th>
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                {% for century in centuries %}
+
+                <tr>
+
+                    <td>{{ century.date }}</td>
+
+                    <td>
+                        <span class="badge bg-primary">
+                            {{ century.format }}
+                        </span>
+                    </td>
+
+                    <td class="fw-bold">
+                        {{ century.score }}
+                    </td>
+
+                    <td>{{ century.opponent }}</td>
+
+                    <td>{{ century.venue }}</td>
+
+                </tr>
+
+                {% else %}
+
+                <tr>
+
+                    <td colspan="5"
+                        class="text-center py-4">
+
+                        No century entries found.
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}
+

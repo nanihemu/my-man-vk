@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}Biography | Virat Kohli Hub{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <h1 class="section-title text-center mb-4">
+        Virat Kohli - Biography
+    </h1>
+
+    <div class="row align-items-center g-4">
+
+        <div class="col-md-5">
+
+            <img
+                src="{{ url_for('static',
+                filename='images/virat.jpg') }}"
+                class="img-fluid rounded-4 shadow"
+                alt="Virat Kohli">
+
+        </div>
+
+
+        <div class="col-md-7">
+
+            <h2>About Virat Kohli</h2>
+
+            <p>
+                Virat Kohli is an Indian international
+                cricketer known for his batting,
+                consistency and performances across
+                cricket formats.
+            </p>
+
+            <p>
+                Born on 5 November 1988 in Delhi, India,
+                he rose through India's age-group
+                cricket system.
+            </p>
+
+            <p>
+                He captained India's Under-19 team
+                to victory in the 2008 Under-19
+                Cricket World Cup.
+            </p>
+
+            <p>
+                He made his international debut
+                in 2008 and has represented India
+                in Test, ODI and T20I cricket.
+            </p>
+
+            <p>
+                Kohli has also played in the
+                Indian Premier League for
+                Royal Challengers Bengaluru.
+            </p>
+
+            <a href="/records"
+               class="btn btn-dark mt-3">
+                Explore Career Records
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+

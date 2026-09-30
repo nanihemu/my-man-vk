@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+
+{% block title %}Videos | Virat Kohli Hub{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <h1 class="section-title text-center">
+        Virat Kohli Videos
+    </h1>
+
+    <p class="text-center text-secondary">
+        Explore batting highlights, centuries,
+        interviews, World Cup and IPL videos.
+    </p>
+
+
+    <!-- Search Form -->
+
+    <form method="GET"
+          action="/videos"
+          class="row justify-content-center my-4">
+
+        <div class="col-md-7">
+
+            <input type="text"
+                   name="q"
+                   value="{{ search }}"
+                   class="form-control form-control-lg"
+                   placeholder="Search video categories...">
+
+        </div>
+
+
+        <div class="col-md-2 mt-2 mt-md-0">
+
+            <button class="btn btn-danger btn-lg w-100">
+                Search
+            </button>
+
+        </div>
+
+    </form>
+
+
+    <!-- Video Cards -->
+
+    <div class="row g-4">
+
+        {% for video in videos %}
+
+        <div class="col-md-6 col-lg-4">
+
+            <div class="video-card h-100 p-3">
+
+
+                {% if video.video_id %}
+
+                <!-- Embedded YouTube Video -->
+
+                <div class="ratio ratio-16x9 mb-3">
+
+                    <iframe
+                        src="https://www.youtube.com/embed/{{ video.video_id }}"
+                        title="{{ video.title }}"
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen>
+                    </iframe>
+
+                </div>
+
+
+                {% else %}
+
+                <!-- YouTube Search Link -->
+
+                <a href="{{ video.youtube_url }}"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="video-placeholder">
+
+                    <span class="youtube-icon">
+                        ▶
+                    </span>
+
+                    <span>
+                        Find videos on YouTube
+                    </span>
+
+                </a>
+
+                {% endif %}
+
+
+                <!-- Category -->
+
+                <span class="badge bg-warning text-dark mt-2">
+                    {{ video.category }}
+                </span>
+
+
+                <!-- Video Title -->
+
+                <h5 class="mt-3">
+                    {{ video.title }}
+                </h5>
+
+
+                <!-- Watch Button -->
+
+                <a href="{{ video.youtube_url }}"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="btn btn-outline-danger mt-2">
+
+                    Watch on YouTube
+
+                </a>
+
+
+            </div>
+
+        </div>
+
+
+        {% else %}
+
+        <div class="col-12 text-center">
+
+            <p>No matching videos found.</p>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+
