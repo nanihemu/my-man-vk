@@ -9,6 +9,12 @@ app = Flask(__name__)
 # Sample records only.
 # Add additional verified records as needed.
 
+centuries_summary = {
+    "total": 86,
+    "odi": 55,
+    "test": 30,
+    "t20i": 1
+}
 centuries_data = [
     {
         "format": "ODI",
