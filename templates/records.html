@@ -16,66 +16,26 @@
     </p>
 
 
-    <div class="table-responsive mt-4">
+    <div class="record-card">
+    <h2>International Centuries</h2>
+    <h3>{{ centuries.total }}</h3>
+    <p>Total Centuries</p>
+</div>
 
-        <table class="table table-bordered
-                      table-hover text-center">
+<div class="record-card">
+    <h3>ODI</h3>
+    <p>{{ centuries.odi }}</p>
+</div>
 
-            <thead class="table-dark">
+<div class="record-card">
+    <h3>Test</h3>
+    <p>{{ centuries.test }}</p>
+</div>
 
-                <tr>
-                    <th>Format</th>
-                    <th>Stored Centuries</th>
-                    <th>Highest Stored Score</th>
-                    <th>View</th>
-                </tr>
-
-            </thead>
-
-
-            <tbody>
-
-                {% for record in records %}
-
-                <tr>
-
-                    <td>{{ record.format }}</td>
-
-                    <td>{{ record.centuries }}</td>
-
-                    <td>{{ record.highest_score }}</td>
-
-                    <td>
-                        <a
-                            href="{{ url_for(
-                            'centuries',
-                            format=record.format
-                            ) }}"
-                            class="btn btn-sm btn-primary">
-
-                            View Centuries
-
-                        </a>
-                    </td>
-
-                </tr>
-
-                {% else %}
-
-                <tr>
-                    <td colspan="4">
-                        No records available.
-                    </td>
-                </tr>
-
-                {% endfor %}
-
-            </tbody>
-
-        </table>
-
-    </div>
-
+<div class="record-card">
+    <h3>T20I</h3>
+    <p>{{ centuries.t20i }}</p>
+</div>
 
     <div class="alert alert-info mt-4">
 
