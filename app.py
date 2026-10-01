@@ -140,37 +140,12 @@ def bio():
 # RECORDS PAGE
 # --------------------------------
 
-@app.route("/records")
+@app.route('/records')
 def records():
-
-    summary = []
-
-    for fmt in ["Test", "ODI", "T20I"]:
-
-        entries = [
-            item for item in centuries_data
-            if item["format"] == fmt
-        ]
-
-        highest = max(
-            (
-                int(item["score"].replace("*", ""))
-                for item in entries
-            ),
-            default=0
-        )
-
-        summary.append({
-            "format": fmt,
-            "centuries": len(entries),
-            "highest_score": highest
-        })
-
     return render_template(
-        "records.html",
-        records=summary
+        'records.html',
+        centuries=centuries_summary
     )
-
 
 # --------------------------------
 # CENTURIES PAGE
